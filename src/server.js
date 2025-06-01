@@ -6,13 +6,12 @@ dotenv.config();
 
 import express from 'express';
 import fetch from 'node-fetch';
-import ical from 'node-ical';
 import { transformICSEvents } from './ics/transformer.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', async (req, res) => {
+app.get('/calender', async (req, res) => {
     try {
         const url = process.env.ICS_SOURCE_URL;
         console.log('Fetching iCal data from:', url);
@@ -67,7 +66,6 @@ function buildICS(events) {
     for (const event of events) {
         lines.push('BEGIN:VEVENT');
         lines.push(`UID:${event.uid}`);
-        lines.push(`DESCRIPTION:${event.description || ''}`);
         lines.push(`DTSTAMP:${new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15)}Z`);
         lines.push(`DTSTART;VALUE=DATE:${formatDate(event.start)}`);
         lines.push(`DTEND;VALUE=DATE:${formatDate(event.end)}`);
