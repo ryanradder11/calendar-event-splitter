@@ -28,7 +28,7 @@ export function transformICSEvents(icsData) {
 
             events.push({
                 uid: vevent.uid,
-                summary: "Reserved",
+                summary: "Gereserveerd",
                 description: "Gereserveerd",
                 date: start.format('YYYY-MM-DD'),
                 start: start.format('YYYY-MM-DDTHH:mm:ss[Z]'),
@@ -44,7 +44,7 @@ export function transformICSEvents(icsData) {
 
                 events.push({
                     uid: `${vevent.uid}-${i}`,
-                    summary: vevent.summary,
+                    summary: "Gereserveerd",
                     description: vevent.description || '',
                     date: currentStart.format('YYYY-MM-DD'),
                     start: currentStart.format('YYYY-MM-DDTHH:mm:ss[Z]'),
@@ -57,7 +57,7 @@ export function transformICSEvents(icsData) {
 
             events.push({
                 uid: vevent.uid,
-                summary: vevent.summary,
+                summary: "Gereserveerd",
                 description: vevent.description || '',
                 date: start.format('YYYY-MM-DD'),
                 start: start.format('YYYY-MM-DDTHH:mm:ss[Z]'),
