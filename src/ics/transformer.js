@@ -24,7 +24,7 @@ export function transformICSEvents(icsData) {
             const differenceInDays = end.diff(start, 'day');
 
             console.log(diff, differenceInDays);
-            if (differenceInDays > 4) continue;
+            if (differenceInDays > 2) continue;
 
             events.push({
                 uid: vevent.uid,
