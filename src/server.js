@@ -11,7 +11,7 @@ import { transformICSEvents } from './ics/transformer.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/calender', async (req, res) => {
+app.get('/calender-v2', async (req, res) => {
     try {
         const url = process.env.ICS_SOURCE_URL;
         console.log('Fetching iCal data from:', url);
