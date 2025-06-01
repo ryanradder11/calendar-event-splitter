@@ -2,7 +2,7 @@
 FROM node:20-alpine
 
 # Set working directory inside the container
-WORKDIR /app
+WORKDIR /src
 
 # Copy package files and install dependencies
 COPY package*.json ./
@@ -15,4 +15,4 @@ COPY src .
 EXPOSE 3000
 
 # Start the app
-CMD ["node", "src/server.js"]
+CMD ["node", "server.js"]

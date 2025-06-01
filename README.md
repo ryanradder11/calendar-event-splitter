@@ -36,3 +36,11 @@ PORT=3000
 ```bash
 npm start
 ```
+
+5. **Run with Docker**
+
+```bash
+docker build -t calendar-event-splitter .
+docker run -p 3000:3000 --env-file .env calendar-event-splitter
+```
+
