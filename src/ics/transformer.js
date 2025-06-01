@@ -9,6 +9,8 @@ export function transformICSEvents(icsData) {
         const vevent = parsed[key];
         if (vevent.type !== 'VEVENT') continue;
 
+        if (vevent.summary.includes("Airbnb (Not available)")) continue;
+
         if (!vevent.start || !vevent.end) {
             console.warn('Skipping invalid event:', vevent);
             continue;
