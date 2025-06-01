@@ -9,8 +9,6 @@ export function transformICSEvents(icsData) {
         const vevent = parsed[key];
         if (vevent.type !== 'VEVENT') continue;
 
-        if (vevent.summary.includes("Airbnb (Not available)")) continue;
-
         if (!vevent.start || !vevent.end) {
             console.warn('Skipping invalid event:', vevent);
             continue;
@@ -21,7 +19,25 @@ export function transformICSEvents(icsData) {
         const isAllDay = vevent.start.dateOnly === true;
         const diff = isAllDay ? end.diff(start, 'day') : end.diff(start, 'day') + 1;
 
-        if (isAllDay && diff > 1) {
+        if (vevent.summary.includes("Airbnb (Not available)")) {
+            console.log('Skipping Airbnb event:', vevent.summary);
+            const differenceInDays = end.diff(start, 'day');
+
+            console.log(diff, differenceInDays);
+            if (differenceInDays > 4) continue;
+
+            events.push({
+                uid: vevent.uid,
+                summary: "Reserved",
+                description: "Gereserveerd",
+                date: start.format('YYYY-MM-DD'),
+                start: start.format('YYYY-MM-DDTHH:mm:ss[Z]'),
+                end: start.add(1, 'day').format('YYYY-MM-DDTHH:mm:ss[Z]'),
+                isAllDay: true
+            });
+
+            continue;
+        } else if (isAllDay && diff > 1) {
             for (let i = 0; i < diff; i++) {
                 const currentStart = start.add(i, 'day');
                 const currentEnd = currentStart.add(1, 'day');
