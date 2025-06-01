@@ -1,0 +1,26 @@
+{
+  "name": "calendar-event-splitter",
+  "version": "1.0.0",
+  "description": "A simple Node.js application to split calendar events into multiple events based on specified criteria.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanradder11/calendar-event-splitter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanradder11/calendar-event-splitter/issues"
+  },
+  "homepage": "https://github.com/ryanradder11/calendar-event-splitter#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}
